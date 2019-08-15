@@ -12,10 +12,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,7 +53,7 @@ public class CallAPI extends AsyncTask {
 
                     String org = result.getString("org");
                     boolean isHost = result.getBoolean("host-ip");
-                    final String country = null;
+                    final String country = api_package.equals("Professional") ? !result.getJSONObject("country").isNull("name") ? result.getJSONObject("country").getString("name") : null  : null;
                     String cc = null;
                     subdivision = null;
                     String city = null;
@@ -133,10 +130,11 @@ public class CallAPI extends AsyncTask {
 
                         while(var33.hasNext()) {
                             UUID uuid = (UUID)var33.next();
-//                            Player notifyPlayer = this.plugin.getServer().getPlayer(uuid);
-//                            if (notifyPlayer != null && notifyPlayer.isOnline()) {
-//                                notifyPlayer.sendMessage(this.plugin.msg(this.player.getName() + " tried connecting with a anonymizer."));
-//                            }
+                            Optional<Player> notifyPlayer = this.plugin.getServer().getPlayer(uuid);
+                            Player player = notifyPlayer.get();
+                            if (player != null && player.isOnline()) {
+                                player.sendMessage(this.plugin.msg(this.player.getName() + " tried connecting with a anonymizer."));
+                            }
                         }
 
                         if (this.plugin.configReader.getLogging()) {
@@ -244,10 +242,11 @@ public class CallAPI extends AsyncTask {
 
                     while(var24.hasNext()) {
                         UUID uuid = (UUID)var24.next();
-//                        Player notifyPlayer = this.plugin.getServer().getPlayer(uuid);
-//                        if (notifyPlayer != null && notifyPlayer.isOnline()) {
-//                            notifyPlayer.sendMessage(this.plugin.msg("API Server Returned Error: " + result.getString("msg")));
-//                        }
+                        Optional<Player> notifyPlayer = this.plugin.getServer().getPlayer(uuid);
+                        Player player = notifyPlayer.get();
+                        if (player != null && player.isOnline()) {
+                            player.sendMessage(this.plugin.msg("API Server Returned Error: " + result.getString("msg")));
+                        }
                     }
 
                     this.plugin.getLogger().critical("API Server Returned Error Message: {0} when {1} tried to connect");
