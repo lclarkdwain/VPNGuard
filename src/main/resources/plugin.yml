@@ -1,0 +1,44 @@
+name: VPNGuard
+main: dev.anullihate.vpnguard.VPNGuard
+version: "${pom.version}"
+api: ["1.0.0"]
+commands:
+   vpnguard:
+      description: Allows you to perform VPNGuard related commands.
+      usage: /vpnguard <command>
+      permission: vpnguard.command.vpnguard
+      permission-message: You don't have permission to use this command.
+permissions:
+    vpnguard.permission.bypass:
+        default: false
+        description: Allows user or user group with this permission to bypass all anonymization checks.
+    vpnguard.command.vpnguard:
+        default: true
+        description: Allows you to use the VPNGuard command
+    vpnguard.command.notify:
+        default: op
+        description: Enable or Disable in-game notifications when a player tries to join with a VPN
+    vpnguard.command.report:
+        default: op
+        description: Generates a report with the list of players who have attempted to join your server with a VPN
+    vpnguard.command.clearcache:
+        default: op
+        description: Deletes all locally saved cache files
+    vpnguard.command.clearip:
+        default: op
+        description: Deletes the locally saved cache file for the specified IP address
+    vpnguard.command.country:
+        default: op
+        description: Allows you toggle between blacklist or whitelist, add, remove, view or clear a country code from your country list
+    vpnguard.command.subnet:
+        default: op
+        description: Allows you subnet ban or unban a IP address range
+    vpnguard.command.whitelist:
+        default: op
+        description: Allows you to add, remove view or clear a ISP/Organization to your global whitelist
+    vpnguard.command.lookup:
+        default: op
+        description: Allows you to search any IP address or Online Player in-game and check details about the IP address
+    vpnguard.command.about:
+        default: true
+        description: General information about the plugin

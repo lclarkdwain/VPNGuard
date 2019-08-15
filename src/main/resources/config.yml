@@ -1,0 +1,47 @@
+prefix: "&f[&4VPNGuard&f]&r "
+
+# If you have purchased a premium API Package enter the key you received otherwise leave blank.
+# You can purchase a key from: https://vpnblocker.net/
+api-key: ""
+
+# Enable caching of API requests?
+api-cache: true
+
+# Time to keep the cached files before overwriting them with an updated API result
+# Intervals are in days.
+api-cache-time: 1
+
+# Keeps track of players who connect using a anonymizer and later allows you to
+# generate a report using the command /vpnguard report.
+# NOTE: This feature is currently experimental, please report any issues.
+report-logging: true
+
+# Commands to run if player has connected with a anonymizer
+commands:
+  - "kick %p You seem to be using a VPN or Proxy"
+
+# Delay time in milliseconds to run the above commands
+commands-delay: 1000
+
+# Kick message to display if the connecting users country is blacklisted or not on the whitelist
+country-deny-message: "&cSorry %p, Players from your country %countryname are prohibited from joining our server"
+
+# Kick message to display if the connecting user is subnet banned
+subnet-banned-message: "You are subnet banned!"
+
+# Timeout in Milliseconds for connecting to the API server.
+# If it takes longer to connect the plugin will assume API server is down.
+timeout: 10000
+
+# Console Logging, displays detailed information every time a player joins
+# the server on console.
+logging: true
+
+# Bypass VPNGuard checks for operatives?
+bypass-ops: false
+
+# Allow users to connect if API Server encounters any errors (Such as Timeout or Rate Limit)?
+bypass-check: true
+
+# Kick message to display if bypass-check is on false.
+bypass-message: "&cUnable to perform anonymization checks try connecting again later."
