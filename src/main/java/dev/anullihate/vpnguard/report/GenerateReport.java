@@ -47,7 +47,7 @@ public class GenerateReport extends AsyncTask {
             File f = new File(this.REPORTS_FOLDER + filename);
             this.sender.sendMessage(this.plugin.msg("Generating Report..." + filename));
             String table = this.generateUserTable();
-            InputStream in = this.getClass().getResourceAsStream("/com/xioax/plugins/report/html/main.html");
+            InputStream in = this.getClass().getResourceAsStream("/main.html");
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), "utf-8"));
 
